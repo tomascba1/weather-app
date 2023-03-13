@@ -1,8 +1,9 @@
 import styles from './WeatherMainInfo.module.css'
 
-export default function WeatherMainInfo({ weather }) {
+export default function WeatherMainInfo({ weather, error }) {
   return (
-    <div className={styles.mainInfo}>
+    <>
+      {error? <div className={styles.errorContainer}><div className={styles.errorText}>Location Not Found</div></div> : <div className={styles.mainInfo}>
       <div className={styles.city}>{weather?.location.name}</div>
       <div className={styles.country}>{weather?.location.country}</div>
       <div className={styles.row}>
@@ -26,7 +27,7 @@ export default function WeatherMainInfo({ weather }) {
           style={{border:0}}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-    </div>
+        ></iframe></div>}
+    </>
   );
 }

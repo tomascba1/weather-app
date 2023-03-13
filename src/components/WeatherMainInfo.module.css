@@ -3,6 +3,23 @@
     padding: 40px;
     border-radius: 5px;
     box-sizing: border-box;
+    min-height: 733px;
+}
+
+.errorText{
+    font-size: 38px;
+    font-weight: bolder;
+}
+
+.errorContainer{
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    min-height: 733px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .city{

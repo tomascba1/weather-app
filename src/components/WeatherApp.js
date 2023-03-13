@@ -7,9 +7,10 @@ import Loading from './Loading'
 
 export default function WeatherApp(){
     const [weather, setWeather] = useState(null)
+    const [error, setError] =useState(false)
 
     useEffect(()=>{
-        loadInfo()
+    loadInfo()
     },[])
     
     useEffect(()=>{
@@ -20,12 +21,12 @@ export default function WeatherApp(){
         try {
             const req = await fetch(`http://api.weatherapi.com/v1/current.json?aqi=no&key=c71b9d60fef64c12803131354231303&q=${city}`)
             const json = await req.json()
-            console.log(json);
-            setTimeout(() => {
-                setWeather(json)
-            }, 800);
+            if(json.error){
+                setError(true)
+            } else {
+                setError(false)
+                setWeather(json)}
         } catch (error) {
-            
         }
     }
 
@@ -34,7 +35,7 @@ export default function WeatherApp(){
     }
     return <div className={styles.weatherContainer}>
         <WeatherForm onChangeCity={handleChangeCity}/>
-        {weather ?  <WeatherMainInfo weather={weather}/> : <Loading />}
+        {weather ?  <WeatherMainInfo error={error} weather={weather}/> : <Loading />}
        
     </div>
 }
