@@ -1,0 +1,13 @@
+.container{
+    margin: 10px 0px;
+}
+
+.input{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 0;
+    border-radius: 3px;
+    text-align: center;
+}
